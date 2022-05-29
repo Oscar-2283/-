@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣天氣</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="shortcut icon" href="./img/taiwan.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/weathercard.css">
+</head>
+<body>
+    <header>
+    
+        <div class="start">weather forecast</div>
+        <nav>
+            <label for="burger">
+            <div class="menu-btn">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="line line3"></div>             
+            </div>
+            </label>
+            <input type="checkbox" id="burger">
+            <div class="button">
+                <button class="all">全台</button>
+                <button class="north">北部</button>
+                <button class="mid">中部</button>
+                <button class="south">南部</button>
+                <button class="east">東部</button>
+                <button class="other">離島</button>
+            </div>
+        </nav>
+       
+        <div id="times">
+            <div id="days"></div>
+            <div id="hours"></div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="homepage">
+            <a href="#"><i class="fa-solid fa-angles-up"></i></a>
+        </div>
+        <div class="flip-card">
+         
+        </div>
+    </section>
+
+    <script src="./jS/wheather.js">
+        
+        // let dataid = "F-C0032-001"
+        // let apikey = "CWB-A387D4A9-FFF8-4252-98D0-EC612D81582F"
+
+        // let url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/' + dataid + '?Authorization=' + apikey + '&format=JSON';
+
+        // let cities = [
+        //     ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '南投縣', '彰化縣', '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣', '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'],
+        //     ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣', '苗栗縣'], ['臺中市', '南投縣', '彰化縣', '雲林縣', '嘉義市', '嘉義縣'],
+        //     ['臺南市', '高雄市', '屏東縣'], ['宜蘭縣', '花蓮縣', '臺東縣'], ['澎湖縣', '金門縣', '連江縣'],
+        // ];
+
+        // let currentCities; //天氣卡需要顯示的那些城市
+        // let orgData = {};
+        // currentCities = cities[0]; //全部城市
+
+        // fetch_data();
+        
+
+        // function fetch_data(){
+            
+        //     fetch(url)
+        //         .then(function (response) {
+        //             return response.json();
+        //         })
+        //         .then(function (data) {
+        //             console.log(data) ; //
+        //             organizationData(data);//處理資料組織
+        //             arrange_cities(); //處理每個城市
+        //         })
+        // }
+
+        // function organizationData(data){
+        //     let locations = data.records.location;
+        //     locations.forEach(location => {
+        //         console.log(location);
+        //         let locationName = location.locationName;
+        //         console.log(locationName); //各縣市
+        //         let  weather_time = location.weatherElement[0].time[0]; //取出時間
+        //         let wx =weather_time.parameter.parameterName;//天氣狀況
+        //         console.log(wx)
+        //         let startTime = weather_time.startTime;
+        //         let endTime =  weather_time.endTime;
+        //         console.log(startTime);
+        //         console.log(endTime);
+        //         let maxT = location.weatherElement[4].time[0].parameter.parameterName;
+        //         let minT = location.weatherElement[2].time[0].parameter.parameterName;
+        //         console.log(maxT,minT);
+        //         let pop = location.weatherElement[1].time[0].parameter.parameterName;//濕度百分比
+        //         console.log(pop);
+        //         let CI = location.weatherElement[3].time[0].parameter.parameterName;//舒適度
+        //         console.log(CI);
+
+        //         orgData[locationName] = {
+        //             'wx': wx,
+        //             'startTime':startTime,
+        //             'endTime':endTime,
+        //             'maxT':maxT,
+        //             'minT':minT,
+        //             'pop':pop,
+        //             'CI':CI
+
+        //         }
+        //     })
+        //     console.log(orgData);
+        //     console.log(orgData.基隆市)
+        // }
+        // function arrange_cities(){
+        //  let card_region = document.querySelector('.card_region');
+        //  card_region.innerHTML = ''
+        //  currentCities.forEach((city,index) => {
+
+        //     let cityData = orgData[city];
+        //     console.log(city,cityData);
+        //     let wheather_pic 
+        //     // console.log("123",cityData.wx)
+        //     if (cityData.wx == "陰短暫陣雨"){
+        //         wheather_pic = "./img/晴天.png"
+        //     }else if(cityData.wx == "多雲"){
+        //         wheather_pic = "./img/晴天.png"
+        //     }else if ((cityData.wx == "多雲時陰短暫陣雨")||(cityData.wx == "多雲短暫陣雨或雷雨")){
+        //         wheather_pic = "./img/晴天.png"
+        //     }else if ((cityData.wx == "晴時多雲")||(cityData.wx == "多雲時晴")){
+        //         wheather_pic = "./img/晴天.png"
+        //     }else if (cityData.wx == "晴時多雲陰短暫陣雨或雷雨"){
+        //         wheather_pic = "./img/晴天.png"
+        //     }
+             
+        //      card_region.innerHTML += 
+                
+        //      `  <div class="single_card">
+        //           <img src=${wheather_pic} alt="">
+        //           <div class = "text_region">
+        //             <p>${city}</P>
+        //             <p>${cityData.wx}</p>
+        //             <p>${cityData.startTime.substr(6,4).replaceAll('-','/')}</p>
+        //             <p>${cityData.startTime.substr(10,6).replaceAll('-','/')}~${cityData.endTime.substr(10,6).replaceAll('-','/')}</p>
+        //             <p>最高溫: ${cityData.maxT} °C</p>
+        //             <p>最低溫:${cityData.minT}  °C</p>
+        //             <p>降雨機率: ${cityData.pop}%</p>
+        //             <p>${cityData.CI}</p>
+        //             </div>
+        //         </div>
+                
+                
+        //     `
+        //         //字串.substr(起始位置,結束位置)取從起始位置到結束位置
+        //         //replaceAll(要被取代掉的,取代掉的)
+
+
+
+        //  });
+
+         
+        // }
+        
+
+    </script>
+</body>
+</html>
